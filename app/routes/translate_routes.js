@@ -4,10 +4,10 @@ module.exports = function(app, db) {
 	app.post('/translate', (req, res) => {
 		const test_data = 'Welcome';
 
-		console.log(req.body)
+		console.log(req.body.message)
 
-		translate(test_data, {from: 'en', to: 'ja'}).then(gt => {
-		    gt.source = test_data;
+		translate(req.body.message, {from: 'en', to: 'ja'}).then(gt => {
+		    gt.source = req.body.message;
 		    res.send(gt);
 		}).catch(err => {
 			res.send(err);
