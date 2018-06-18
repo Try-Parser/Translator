@@ -6,7 +6,7 @@ module.exports = function(app, db) {
 
 		console.log(req.body.message)
 
-		translate(req.body.message, {from: 'en', to: 'ja'}).then(gt => {
+		translate(req.body.message, {from: 'ja', to: 'en'}).then(gt => {
 		    gt.source = req.body.message;
 		    res.send(gt);
 		}).catch(err => {

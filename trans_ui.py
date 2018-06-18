@@ -255,12 +255,12 @@ class New_Toplevel:
         self.fileextensionEntry.set(filename[1])
 
     def translate(self):
-        f = open(self.filename, "r")
+        f = open(self.filename, "r", encoding='utf-8')
         if f.mode == 'r':
             contents = f.read()
             f.close()
             r = requests.post("http://localhost:8000/translate", data={ "message": contents })
-            self.newFilename = self.filename.split('.')[0] + "_ja." + self.filename.split(".")[1];
+            self.newFilename = self.filename.split('.')[0] + "_en." + self.filename.split(".")[1];
 
             rfile = open(self.newFilename, "w+", encoding='utf-8')
             rfile.write(r.json()['text'])
